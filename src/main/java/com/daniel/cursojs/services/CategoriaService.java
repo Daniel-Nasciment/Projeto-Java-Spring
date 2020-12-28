@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import com.daniel.cursojs.domain.Categoria;
 import com.daniel.cursojs.repositories.CategoriaRepository;
+import com.daniel.cursojs.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class CategoriaService {
@@ -15,7 +16,9 @@ public class CategoriaService {
 	
 	public Categoria buscar(Integer id) {
 		Optional<Categoria> obj = repo.findById(id);
-		return obj.orElse(null);
+		
+		return obj.orElseThrow(() -> new ObjectNotFoundException(
+				"Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()));
 	}
 	
 	
