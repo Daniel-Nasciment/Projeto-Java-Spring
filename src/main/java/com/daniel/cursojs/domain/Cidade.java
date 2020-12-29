@@ -23,6 +23,7 @@ public class Cidade implements Serializable {
 	@JoinColumn(name = "estado_id")
 	private Estado estado;
 	
+	
 	public Cidade () {
 		
 	}
@@ -32,6 +33,7 @@ public class Cidade implements Serializable {
 		this.id = id;
 		this.nome = nome;
 		this.estado = estado;
+		
 	}
 
 	public Integer getId() {
@@ -57,7 +59,9 @@ public class Cidade implements Serializable {
 	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
-
+	
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -82,6 +86,8 @@ public class Cidade implements Serializable {
 			return false;
 		return true;
 	}
+
+	
 	
 	
 	
