@@ -4,7 +4,6 @@ package com.daniel.cursojs.resources;
 import java.net.URI;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -41,4 +40,10 @@ public class CategoriaResource {
 		
 	}
 	
+	@RequestMapping (value= "/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Void> update (@RequestBody Categoria obj, @PathVariable Integer id) {
+		obj.setId(id);
+		obj = service.update(obj);
+		return ResponseEntity.noContent().build();
+	}
 }
